@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дубли вкладок</title>
+  <link rel="icon" href="icons/tabs-32.png">
+  <link rel="stylesheet" href="dashboard.css">
+  <script type="module" src="dashboard.js"></script>
+</head>
+<body>
+  <main>
+    <header class="page-header">
+      <div>
+        <h1>Дубли вкладок</h1>
+        <p id="summary">Проверяем открытые вкладки…</p>
+      </div>
+      <button id="refresh" type="button">Обновить</button>
+    </header>
+
+    <section class="results" aria-label="Результаты поиска">
+      <div class="toolbar">
+        <label for="search" class="visually-hidden">Фильтр по адресу или заголовку</label>
+        <input id="search" type="search" placeholder="Фильтр по адресу или заголовку">
+        <button id="close-all" type="button" class="primary" disabled>Закрыть дубли</button>
+      </div>
+      <label class="setting">
+        <input id="include-query" type="checkbox" disabled>
+        Учитывать параметры URL после <code>?</code>
+      </label>
+      <p class="hint">При закрытии дублей сохраняются выбранные, закреплённые и воспроизводящие звук вкладки.</p>
+      <p id="notice" class="notice" role="status" hidden></p>
+      <div id="groups"></div>
+      <nav id="pages" aria-label="Страницы результатов" hidden>
+        <button id="previous" type="button">Назад</button>
+        <span id="page-number"></span>
+        <button id="next" type="button">Дальше</button>
+      </nav>
+    </section>
+  </main>
+
+  <dialog id="confirm" aria-labelledby="confirm-title">
+    <form method="dialog">
+      <h2 id="confirm-title">Закрыть выбранные дубли?</h2>
+      <p id="confirm-message"></p>
+      <div class="dialog-actions">
+        <button value="cancel" autofocus>Отмена</button>
+        <button value="close" class="primary">Закрыть</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
